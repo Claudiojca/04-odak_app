@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="fond">
+
+    <ion-buttons slot="start">
+      <ion-menu-button class="btnmenu" ion-icon="icon-only" slot="start" name="add" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Calculadora</ion-title>
+    <ion-buttons slot="end">
+      <ion-chip>
+        <ion-avatar>
+          <img src="/assets/image/Pulpo.png">
+        </ion-avatar>
+        <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-chip>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <form id="form1">
+    <ion-item id="input4">
+      <ion-label></ion-label>
+      <ion-input type="text" placeholder="0" name="display"[(ngModel)]="resultado"></ion-input>
+    </ion-item>
+  </form><br>
+
+
+  <ion-button (click)="borrar()" class="btclean" expand="block" shape="round">
+    C
+  </ion-button>
+  <div class="contenido"></div>
+  <!-- Numero 7-->
+  <ion-fab style="margin-top:15%; margin-left:5%">
+    <ion-fab-button class="btcalcu" (click)="Num('7')">7</ion-fab-button>
+  </ion-fab>
+    <!-- Numero 8-->
+    <ion-fab  style="margin-top:15%; margin-left:30%;">
+      <ion-fab-button class="btcalcu" (click)="Num('8')">8</ion-fab-button>
+    </ion-fab>
+      <!-- Numero 9-->
+  <ion-fab  style="margin-top:15%; margin-left:55%;">
+    <ion-fab-button class="btcalcu" class="btcalcu" (click)="Num('9')">9</ion-fab-button>
+  </ion-fab>
+    <!-- Numero 4-->
+    <ion-fab  style="margin-top:35%; margin-left:5%">
+      <ion-fab-button class="btcalcu" (click)="Num('4')">4</ion-fab-button>
+    </ion-fab>
+      <!-- Numero 5-->
+  <ion-fab  style="margin-top:35%; margin-left:30%;">
+    <ion-fab-button class="btcalcu" (click)="Num('5')">5</ion-fab-button>
+  </ion-fab>
+    <!-- Numero 6-->
+    <ion-fab   style="margin-left:55%; margin-top:35%;">
+      <ion-fab-button class="btcalcu" (click)="Num('6')">6</ion-fab-button>
+    </ion-fab>
+      <!-- Numero 1-->
+  <ion-fab   style="margin-top:55%; margin-left:5%">
+    <ion-fab-button class="btcalcu" (click)="Num('1')">1</ion-fab-button>
+  </ion-fab>
+    <!-- Numero 2-->
+    <ion-fab   style="margin-left:30%; margin-top:55%;">
+      <ion-fab-button class="btcalcu" (click)="Num('2')">2</ion-fab-button>
+    </ion-fab>
+      <!-- Numero 3-->
+  <ion-fab  style="margin-left:55%; margin-top:55%;">
+    <ion-fab-button class="btcalcu" (click)="Num('3')">3</ion-fab-button>
+  </ion-fab>
+
+    <!-- Simbolo %-->
+    <ion-fab   style="margin-top:75%; margin-left:5%">
+      <ion-fab-button class="btcalcu" (click)="aritmetic('/100')">%</ion-fab-button>
+    </ion-fab>
+      <!-- Numero 0 -->
+  <ion-fab   style="margin-left:30%; margin-top:75%">
+    <ion-fab-button class="btcalcu" (click)="Num('0')">0</ion-fab-button>
+  </ion-fab>
+      <!-- Punto -->
+      <ion-fab  style="margin-left:55%;margin-top:75%">
+        <ion-fab-button class="btcalcu" (click)="Num('.')">.</ion-fab-button>
+      </ion-fab>
+           <!-- Signo igual -->
+           <ion-fab horizontal="end" style="margin-left:50%; margin-top: 96%">
+            <ion-fab-button class="btigual" (click)="igual()"><ion-icon name="reorder-two-outline"></ion-icon></ion-fab-button>
+          </ion-fab>
+                 <!-- Signo igual -->
+       <ion-fab horizontal="end" style="margin-top:75%; ">
+        <ion-fab-button class="btarit"  (click)="aritmetic('+')"><ion-icon  name="add-outline"></ion-icon></ion-fab-button>
+      </ion-fab>
+          <!-- Signo igual -->
+     <ion-fab horizontal="end" style="margin-top:55%;">
+      <ion-fab-button class="btarit"  (click)="aritmetic('-')"><ion-icon  name="remove-outline"></ion-icon></ion-fab-button>
+     </ion-fab>
+     <!-- Signo igual -->
+     <ion-fab horizontal="end" style="margin-top:35%;">
+      <ion-fab-button class="btarit"  (click)="aritmetic('*')"><ion-icon  name="close-outline"></ion-icon></ion-fab-button>
+     </ion-fab>
+      <!-- Signo igual -->
+      <ion-fab horizontal="end" style="margin-top:15%;">
+        <ion-fab-button class="btarit"  (click)="aritmetic('/')">/</ion-fab-button>
+       </ion-fab>
+</ion-content>
+<app-footer></app-footer>

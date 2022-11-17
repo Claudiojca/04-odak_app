@@ -1,0 +1,70 @@
+<!-- Cabecera -->
+<ion-header class="ion-no-border">
+  <ion-toolbar class="fond">
+
+    <ion-buttons slot="start">
+      <ion-menu-button class="btnmenu" ion-icon="icon-only" slot="start" name="add" menu="first"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Inicio</ion-title>
+    <ion-buttons slot="end">
+      <ion-chip>
+        <ion-avatar>
+          <img src="/assets/image/Pulpo.png">
+        </ion-avatar>
+        <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-chip>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="tittle-1">
+    <ion-label align="center"><h1>Noticias de interes</h1></ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido -->
+
+<ion-content class="ion-padding">
+
+<!-- Refresh-->
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+<!-- Contenido Noticias -->
+
+  <ion-card mode="ios" class="icard" (click)="MostrarInfo()">
+    <ion-card-header class="icard">
+      <img src="/assets/image/SII.png" (click)="MostrarInfo()">
+      <ion-card-title>Recuerda mantenerte informado de la Ley N°21.133</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="icard">
+      De acuerdo en lo expresado en el artículo quinto transitorio de la ley N° 21.133
+      establece que a partir del año 2020 y hasta el año 2027...
+      <ion-button fill="clear" (click)="MostrarInfo()" class="cardb" slot="start">
+        Ver Más
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card mode="ios" class="icard" (click)="Vermas()">
+    <ion-card-header class="icard">
+      <img src="/assets/image/sueldomin.png" (click)="Vermas()">
+      <ion-card-title>¿En qué consiste?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="icard">
+      Es un subsidio mensual para Micro, Pequeñas y Medianas empresas (Mipymes),
+       cooperativas, personas jurídicas sin fines de lucro (fundaciones u otras) y comunidades,
+        orientado a apoyarlas en el pago del nuevo sueldo mínimo establecido en la Ley N°21.456.
+         Para acceder, la Mipyme debe realizar la solicitud por una sola vez desde el 14 de junio.
+    </ion-card-content>
+    <ion-button fill="clear" (click)="Vermas()" class="cardb" slot="">
+      Ver Más
+    </ion-button>
+  </ion-card>
+</ion-content>
+
+<!-- Pie de Pagina -->
+
+<app-footer></app-footer>

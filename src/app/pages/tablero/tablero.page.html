@@ -1,0 +1,23 @@
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="fond">
+      <ion-buttons slot="start">
+        <ion-menu-button class="btnmenu" ion-icon="icon-only" slot="start" name="add" menu="first"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Tablero</ion-title>
+      <ion-buttons slot="end">
+        <ion-chip>
+          <ion-avatar>
+            <img src="/assets/image/Pulpo.png">
+          </ion-avatar>
+          <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
+          <ion-icon name="notifications-outline"></ion-icon>
+        </ion-chip>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content>
+
+</ion-content>
+<app-footer></app-footer>

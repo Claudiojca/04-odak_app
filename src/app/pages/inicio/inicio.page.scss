@@ -1,0 +1,37 @@
+.btnmenu {
+    color: #2f3e46;
+}
+
+ion-toolbar {
+    --background-color: #cad2c5;
+    --color: #2f3e46;
+}
+
+.fond {
+    --background: #cad2c5;
+    --color: #2f3e46;
+}
+
+ion-title {
+    --color: #2f3e46;
+}
+
+ion-content {
+    .icard {
+        --color: #2f3e46;
+    }
+
+    .cardb {
+        color: #2f3e46;
+        fill: clear !important;
+    }
+}
+
+ion-footer{
+    --color: #2f3e46;
+    text-align: center;
+}
+ion-badge{
+    --background: #cad2c5;
+    --color: #2f3e46;
+}

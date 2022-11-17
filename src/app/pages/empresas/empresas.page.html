@@ -1,0 +1,63 @@
+<!-- Encabezado -->
+
+<ion-header class="ion-no-border">
+
+  <ion-toolbar class="fond">
+    <ion-buttons slot="start">
+      <ion-menu-button class="btnmenu" ion-icon="icon-only" slot="start" name="add" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Empresas</ion-title>
+    <ion-buttons slot="end">
+      <ion-chip>
+        <ion-avatar>
+          <img src="/assets/image/Pulpo.png">
+        </ion-avatar>
+        <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-chip>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<!-- Contenido -->
+
+<ion-content class="ion-padding">
+
+<!-- Refresh -->
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+<!-- Buscador -->
+
+  <ion-searchbar class="bbuscar" placeholder="Categorias" [debounce]="1000" (ionChange)="buscaremp($event)" animated mode="ios"></ion-searchbar>
+  <ion-slides class="slider-container" pager="ios" mode="ios">
+    <ion-slide *ngFor="let empresas of listadoEmpresas | filtro:textoBuscar">
+      <ion-card class="animate__animated fadeInRight">
+        <!-- <img alt="Silhouette of a person's head" src={{imagen_logo}}/> -->
+        <ion-card-header>
+          <ion-card-title>{{empresas.nombre_fantasia}}</ion-card-title>
+          <ion-card-subtitle>{{empresas.descripcion}}</ion-card-subtitle>
+        </ion-card-header>
+          <ion-label>{{empresas.direccion}}</ion-label> <br>
+          <ion-label>{{empresas.correo}}</ion-label> <br>
+          <ion-icon name="logo-facebook" (click)="bfacebook()"></ion-icon>&nbsp;
+          <ion-icon name="logo-instagram" (click)="binstagram()"></ion-icon>&nbsp;
+          <ion-icon name="logo-whatsapp" (click)="bwhatsapp()"></ion-icon>&nbsp;
+          <ion-icon name="logo-twitter" (click)="btwitter()"></ion-icon>&nbsp;
+          <ion-icon name="logo-linkedin" (click)="blinkedin()"></ion-icon>&nbsp;
+        <ion-card-content>
+          {{empresas.titulo_descripcion}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content>
+
+<!-- Pie de Pagina -->
+
+<app-footer></app-footer>
+

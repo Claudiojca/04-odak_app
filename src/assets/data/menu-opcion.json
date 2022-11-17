@@ -1,0 +1,28 @@
+[
+    {
+        "icon": "home-outline",
+        "name": "Inicio",
+        "redirectTo": "/inicio"
+    },
+    {
+      "icon": "clipboard-outline",
+      "name": "Tablero",
+      "redirectTo": "/tablero"
+  },
+  {
+    "icon": "business-outline",
+    "name": "Empresas",
+    "redirectTo": "/empresas"
+},
+  {
+      "icon": "document-text-outline",
+      "name": "Cotizacion",
+      "redirectTo": "/cotizacion"
+  },
+  {
+      "icon": "calculator-outline",
+      "name": "Calculadora",
+      "redirectTo": "/calculadora"
+  }
+  
+  ]

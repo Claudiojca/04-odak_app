@@ -1,0 +1,67 @@
+<!-- Contenido -->
+<ion-content>
+
+<!-- Refresh -->
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+<!-- Fromulario login -->
+
+  <form #loginForm="ngForm">
+  <ion-footer>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div class="login-section ion-no-padding" #pie>
+          <div class="heading ion-padding" >
+            <h1>Bienvenidos a Odak</h1>
+            <p>Inicia sesion para continuar</p>
+          </div>
+
+          <!-- Cajas de Textos -->
+
+            <div class="login-form ion-padding">
+              <div class="form-input">
+                <ion-icon name="mail-outline"></ion-icon>
+                <ion-item>
+                  <ion-label position="floating">Correo</ion-label>
+                  <ion-input type="email" placeholder="support@odak.cl" [(ngModel)]="correo" name="email" id="iemail"
+                             pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                             required></ion-input>
+                </ion-item>
+              </div>
+              <div class="form-input">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <ion-item>
+                  <ion-label position="floating">Clave</ion-label>
+                  <ion-input type="password" placeholder="***********" [(ngModel)]="clave" name="password" id="ipassword"
+                             minlength="3" maxlength="20" clear-input="true" required></ion-input>
+                </ion-item>
+              </div>
+            </div>
+
+            <!-- Botones -->
+
+            <div class="action-button ion-padding">
+              <ion-button [disabled]="!loginForm.valid" (click)="Ingresar()" size="large" class="login-button" >
+                Ingresar
+              </ion-button>
+              <p>¿Olvido su clave?</p>
+              <ion-button class="signup-button" size="large">
+                Registrar
+              </ion-button>
+            </div>
+
+            <!-- Pie de pagina -->
+
+            <div class="foot-form">
+              <p>From Touch <ion-icon name="finger-print-outline"></ion-icon> V 0.0.1</p>
+            </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</form>
+    
+</ion-content>
