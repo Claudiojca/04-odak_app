@@ -20,4 +20,6 @@ export class PerfilInfoComponent implements OnInit {
       this.popoverCtrl.dismiss();
     
   }
+
+  
 }

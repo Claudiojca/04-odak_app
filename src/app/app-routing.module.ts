@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'perfil-empresas',
     loadChildren: () => import('./pages/perfil-empresas/perfil-empresas.module').then( m => m.PerfilEmpresasPageModule)
   },
+  {
+    path: 'info',
+    loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
+  },
+  {
+    path: 'ayuda',
+    loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
+  },
 ];
 
 @NgModule({
