@@ -3,18 +3,15 @@ import { PopoverController } from '@ionic/angular';
 import { PerfilInfoComponent } from 'src/app/components/perfil-info/perfil-info.component';
 
 @Component({
-  selector: 'app-ayuda',
-  templateUrl: './ayuda.page.html',
-  styleUrls: ['./ayuda.page.scss'],
+  selector: 'app-perfil-usuario',
+  templateUrl: './perfil-usuario.page.html',
+  styleUrls: ['./perfil-usuario.page.scss'],
 })
-export class AyudaPage implements OnInit {
-
+export class PerfilUsuarioPage implements OnInit {
   nombre: string = localStorage.getItem("nomb");
-  
   constructor(private popoverCtrl: PopoverController) { }
 
   ngOnInit() {
-    console.log(this.nombre);
   }
   async presentPopover (ev:any) {
 
@@ -25,11 +22,5 @@ export class AyudaPage implements OnInit {
     });
     return await popover.present();
    }
-   handleRefresh(event){
-    setTimeout(() => {
-      // Any calls to load data go here
-      event.target.complete();
-    }, 2000);
-  }
 
 }

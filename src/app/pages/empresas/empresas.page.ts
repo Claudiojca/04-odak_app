@@ -3,13 +3,9 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Platform, PopoverController } from '@ionic/angular';
 import { PerfilInfoComponent } from 'src/app/components/perfil-info/perfil-info.component';
 import { SwiperOptions } from 'swiper';
-import { SwiperComponent, SwiperModule } from 'swiper/angular';
-import SwiperCore, { Pagination} from "swiper";
+import { SwiperComponent} from 'swiper/angular';
+
 import { EmpresaServicioService } from './servicio-empresa/empresa-servicio.service';
-
-
-
-SwiperCore.use([Pagination]);
 
 @Component({
   selector: 'app-empresas',
@@ -108,7 +104,16 @@ export class EmpresasPage implements OnInit {
 
    }
    btwitter(){
+       if(this.platform.is('ios') || this.platform.is('android')){
 
+      this.twitter = this.twitter
+  
+    const browser = this.iab.create(this.twitter);
+    browser.show();
+    return;
+    }
+    window.open(this.twitter, '_blank');
+   
    }
    blinkedin(){
 

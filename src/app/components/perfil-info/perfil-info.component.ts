@@ -20,6 +20,18 @@ export class PerfilInfoComponent implements OnInit {
       this.popoverCtrl.dismiss();
     
   }
-
+  Info(){
+    this.navCtrl.navigateRoot('/info');
+    this.popoverCtrl.dismiss();
   
+}
+Ayuda(){
+  this.navCtrl.navigateRoot('/ayuda');
+  this.popoverCtrl.dismiss();
+
+}
+perf(){
+  this.navCtrl.navigateRoot('/perfil-usuario');
+  this.popoverCtrl.dismiss();
+}
 }
