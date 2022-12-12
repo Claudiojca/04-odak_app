@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { PerfilInfoComponent } from 'src/app/components/perfil-info/perfil-info.component';
 import { Componente } from 'src/app/interfaces/interfaces';
 import { DataService } from '../../services/data.service';
-import { Router } from '@angular/router';
+
 
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+
 
 @Component({
   selector: 'app-inicio',
@@ -14,8 +15,18 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+  nt= undefined;
+
   @Input()
   nombre: string = localStorage.getItem("nomb");
+  apellidos: string = localStorage.getItem("apell");
+  correoempr: string = localStorage.getItem("ecorreo");
+  nombrempre: string = localStorage.getItem("enomb");
+  direccion: string = localStorage.getItem("edirec");
+  telefono: string = localStorage.getItem("efono");
+  tipousuario: string = localStorage.getItem("udescrip");
+  imagenempr: any = localStorage.getItem("logoemp");
+
   componentes: Observable<Componente[]>;
   url : string;
   getdata: any[] = [];
@@ -23,13 +34,12 @@ export class InicioPage implements OnInit {
               private DataService: DataService,
               private iab: InAppBrowser,
               private popoverCtrl: PopoverController,
-              private platform : Platform,
-              private router: Router)
+              private platform : Platform, )
               { }
+  notific:any;
 
   ngOnInit() {
     this.componentes = this.DataService.getMenuOpcion();
-    console.log(this.nombre);
   };
 
   //----- Boton Menu -----
@@ -38,6 +48,7 @@ export class InicioPage implements OnInit {
     this.menuCtrl.open();
 
   }
+
 
  async presentPopover (ev:any) {
 

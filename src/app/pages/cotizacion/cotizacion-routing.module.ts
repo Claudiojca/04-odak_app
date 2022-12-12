@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CotizacionPage
+  },
+  {
+    path: 'inf-cotizacion',
+    loadChildren: () => import('./inf-cotizacion/inf-cotizacion.module').then( m => m.InfCotizacionPageModule)
   }
 ];
 

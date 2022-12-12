@@ -16,6 +16,7 @@ import { EmpresaServicioService } from './servicio-empresa/empresa-servicio.serv
 })
 export class EmpresasPage implements OnInit {
   
+
   
   textoBuscar: string='';
 
@@ -38,6 +39,7 @@ export class EmpresasPage implements OnInit {
   linkedin:any;
   titulo_descripcion: any;
   
+  
  @ViewChild('swiper') swiper: SwiperComponent;
 
   nombre: string = localStorage.getItem("nomb");
@@ -47,6 +49,7 @@ export class EmpresasPage implements OnInit {
     pagination: true,
   }
   
+  
   constructor(private popoverCtrl: PopoverController,
               private empresaServicioService: EmpresaServicioService,
               private platform : Platform,
@@ -55,19 +58,26 @@ export class EmpresasPage implements OnInit {
 
     ngOnInit() {
       this.obtenerEmpre();
+ 
     }
     handleRefresh(event){
       setTimeout(() => {
-        // Any calls to load data go here
+        this.obtenerEmpre();
         event.target.complete();
       }, 2000);
+       
+      
+      
     }
     obtenerEmpre(){
   
       this.empresaServicioService.obtenerEmpre().subscribe((data)=> {
         console.log(data);
+      
         this.listadoEmpresas = data;
+  
       });
+      
     }
 
   buscaremp(event){

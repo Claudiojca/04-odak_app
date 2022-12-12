@@ -1,22 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { TableroPageRoutingModule } from './tablero-routing.module';
+import { ComponentsModule } from "../../components/components.module";
+import { TableroPageRoutingModule } from "./tablero-routing.module";
+import { TareasPageModule } from "./tareas/tareas.module";
+import { ModalPageModule } from "./modal/modal.module";
 
-import { TableroPage } from './tablero.page';
-import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TareasPageModule,
     TableroPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    ModalPageModule,
+    ReactiveFormsModule
   ],
-  declarations: [TableroPage]
+  declarations: [],
 })
 export class TableroPageModule {}

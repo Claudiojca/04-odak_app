@@ -1,0 +1,65 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Descripcion de Tareas</ion-title>
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="ion-align-self-center">
+    <ion-item>
+      <ion-textarea [(ngModel)]="nombreTarea" placeholder="Escribe tu tarea aqui"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prioridad</ion-label>
+      <ion-select [(ngModel)]="prioridadTarea">
+        <ion-select-option value="1">Baja</ion-select-option>
+        <ion-select-option value="2">Media</ion-select-option>
+        <ion-select-option value="3" selected>Alta</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!---primer calendario-->
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>Inicio</ion-label>
+      <ion-datetime-button datetime="inicio_tarea"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime presentation="date" id="inicio_tarea" [(ngModel)]="inicio_tarea"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <!---/primer calendario-->
+    <!---segundo calendario-->
+    <ion-item>
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label>Vence</ion-label>
+
+      <ion-datetime-button datetime="termino_tarea"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime presentation="date" id="termino_tarea" [(ngModel)]="termino_tarea"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <!---/segundo calendario-->
+    <ion-item>
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-label> Categoria</ion-label>
+      <span>{{categoriaTarea}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-chip *ngFor="let category of categorias; let i=index" (click)="seleCategorias(i)" color="secondary"
+        outline="true">
+        <ion-label color="secondary">{{category}}</ion-label>
+      </ion-chip>
+      <ion-chip color="primary" outline="true">
+        <ion-label color="secondary">Nueva</ion-label>
+        <ion-button fill="clear">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-chip>
+    </ion-item>
+    <ion-button class="ion-margin" expand="block" (click)="crearTarea()">Nueva Tarea</ion-button>
+  </ion-card>
+</ion-content>

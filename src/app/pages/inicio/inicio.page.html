@@ -14,11 +14,15 @@
         </ion-avatar>
         <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
         <ion-icon name="notifications-outline"></ion-icon>
+        <ion-badge *ngFor="let noti of notific" slot="end"></ion-badge>
       </ion-chip>
+
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar class="tittle-1">
-    <ion-label align="center"><h1>Noticias de interes</h1></ion-label>
+    <ion-label align="center">
+      <h1>Noticias de interes</h1>
+    </ion-label>
   </ion-toolbar>
 </ion-header>
 
@@ -26,13 +30,13 @@
 
 <ion-content class="ion-padding">
 
-<!-- Refresh-->
+  <!-- Refresh-->
 
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-<!-- Contenido Noticias -->
+  <!-- Contenido Noticias -->
 
   <ion-card mode="ios" class="icard" (click)="MostrarInfo()">
     <ion-card-header class="icard">
@@ -55,9 +59,9 @@
     </ion-card-header>
     <ion-card-content class="icard">
       Es un subsidio mensual para Micro, Pequeñas y Medianas empresas (Mipymes),
-       cooperativas, personas jurídicas sin fines de lucro (fundaciones u otras) y comunidades,
-        orientado a apoyarlas en el pago del nuevo sueldo mínimo establecido en la Ley N°21.456.
-         Para acceder, la Mipyme debe realizar la solicitud por una sola vez desde el 14 de junio.
+      cooperativas, personas jurídicas sin fines de lucro (fundaciones u otras) y comunidades,
+      orientado a apoyarlas en el pago del nuevo sueldo mínimo establecido en la Ley N°21.456.
+      Para acceder, la Mipyme debe realizar la solicitud por una sola vez desde el 14 de junio.
     </ion-card-content>
     <ion-button fill="clear" (click)="Vermas()" class="cardb" slot="">
       Ver Más

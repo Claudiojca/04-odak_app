@@ -1,0 +1,34 @@
+
+<ion-content>
+  <ion-toolbar>
+    <ion-button class="btnaddout" slot="start" fill="clear" id="open-modal" (click)="Agregarp()"><ion-icon name="checkmark-circle-outline"></ion-icon>Aceptar</ion-button>
+    <ion-button class="btnaddout" slot="end" fill="clear" (click)="Salir()"><ion-icon name="close-circle-outline"></ion-icon>Salir</ion-button>
+  </ion-toolbar>
+  <ion-searchbar class="bbuscar" placeholder="Productos" [debounce]="1000" (ionChange)="Busproduct($event)" animated mode="ios"></ion-searchbar>
+
+  <ion-list>
+    <ion-item>
+      <ion-label class="txttittle">
+        <h3>Producto</h3>
+      </ion-label>
+      <ion-label class="txttittle">
+        <h3>Stock</h3>
+      </ion-label>
+      <ion-label class="txttittle">
+        <h3>Precio</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let productos of listadoproductos" (click)="addproduct(productos)">
+      <ion-label class="txttittle">
+        <ion-input [(ngModel)]="nproducto" name="nombreproducto" [readonly]="true" mode="ios" type="text">{{productos.nombre_producto}}</ion-input>
+      </ion-label>
+      <ion-label class="txttittle">
+        <ion-input [(ngModel)]="tproductos" name="stockproducto" [readonly]="true" mode="ios" type="number">{{productos.stock}}</ion-input>
+      </ion-label>
+      <ion-label class="txttittle">
+        <ion-input [(ngModel)]="pproducto" name="precioproducto" [readonly]="true" mode="ios" type="number">${{productos.precio_producto}}</ion-input>
+      </ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

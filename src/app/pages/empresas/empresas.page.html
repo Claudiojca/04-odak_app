@@ -35,8 +35,10 @@
   <ion-searchbar class="bbuscar" placeholder="Categorias" [debounce]="1000" (ionChange)="buscaremp($event)" animated mode="ios"></ion-searchbar>
   <ion-slides class="slider-container" pager="ios" mode="ios">
     <ion-slide *ngFor="let empresas of listadoEmpresas | filtro:textoBuscar">
-      <ion-card class="animate__animated fadeInRight">
-         <img alt="Silhouette of a person's head" src={{empresas.imagen_logo}}/>
+      <ion-card class="animate__animated fadeInRight" mode="ios">
+
+         <ion-img [src]="empresas.imagen_logo"></ion-img>
+         
         <ion-card-header>
           <ion-card-title>{{empresas.nombre_fantasia}}</ion-card-title>
           <ion-card-subtitle>{{empresas.descripcion}}</ion-card-subtitle>
@@ -48,14 +50,12 @@
           <ion-icon name="logo-whatsapp" (click)="bwhatsapp()"></ion-icon>&nbsp;
           <ion-icon name="logo-twitter" (click)="btwitter()">{{empresas.twitter}}</ion-icon>&nbsp;
           <ion-icon name="logo-linkedin" (click)="blinkedin()"></ion-icon>&nbsp;
-        <ion-card-content>
-          {{empresas.titulo_descripcion}}
-        </ion-card-content>
       </ion-card>
     </ion-slide>
   </ion-slides>
   
 </ion-content>
+
 
 <!-- Pie de Pagina -->
 

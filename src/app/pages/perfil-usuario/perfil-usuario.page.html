@@ -3,8 +3,8 @@
     <ion-buttons slot="start">
       <ion-menu-button class="btnmenu" ion-icon="icon-only" slot="start" name="add" menu="first"></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{nombre}}</ion-title>
-    <ion-buttons slot="end">
+    <ion-title>Perfil {{nombre}}</ion-title>
+    <!-- <ion-buttons slot="end">
       <ion-chip>
         <ion-avatar>
           <img src="/assets/image/Pulpo.png">
@@ -12,12 +12,40 @@
         <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-chip>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <form>
+  <ion-item>
+    <ion-icon name="person-outline"></ion-icon> &nbsp;<ion-label>{{nombre}}</ion-label>&nbsp;
+    <ion-input readonly="true">{{apellidos}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="briefcase-outline"></ion-icon> &nbsp;<ion-label>Cargo:</ion-label>&nbsp;
+    <ion-input readonly="true">{{tipousuario}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="business-outline"></ion-icon> &nbsp;<ion-label>Empresa:</ion-label>&nbsp;
+    <ion-input readonly="true">{{nombrempre}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="location-outline"></ion-icon> &nbsp;<ion-label>Direccion:</ion-label>&nbsp;
+    <ion-input readonly="true">{{direccion}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="call-outline"></ion-icon> &nbsp;<ion-label>Telefono:</ion-label>&nbsp;
+    <ion-input readonly="true">{{telefono}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="mail-outline"></ion-icon> &nbsp;<ion-label>Correo:</ion-label>&nbsp;
+    <ion-input readonly="true">{{correoempr}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-img [src]="imagenempr"></ion-img>
+  </ion-item>
+</form>
 </ion-content>
 
 <app-footer></app-footer>

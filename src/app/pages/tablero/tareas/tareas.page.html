@@ -1,0 +1,184 @@
+<!-- Cabecera -->
+<ion-header class="ion-no-border">
+  <ion-toolbar class="fond">
+
+    <ion-buttons slot="start">
+      <ion-menu-button class="btnmenu" ion-icon="icon-only" slot="start" name="add" menu="first"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Tablero Odak</ion-title>
+    <ion-buttons slot="end">
+      <ion-chip>
+        <ion-avatar>
+          <img src="/assets/image/Pulpo.png">
+        </ion-avatar>
+        <ion-label lines="none" name="nombre" (click)="presentPopover($event)">{{nombre}}</ion-label>
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-badge *ngFor="let noti of notific" slot="end"></ion-badge>
+      </ion-chip>
+   
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+  type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+  type="text/css" />
+
+<!---Baglogs-->
+<ion-content ion-padding class="body">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <div>
+          <ion-card-content>
+            <ion-card >
+              <ion-card-header padding>
+                <ion-item>
+                  <ion-item>
+                    <!-- Contenedor (titulo Tarea) -->
+                    <ion-input [(ngModel)]="descripcion" expand="block" (keyup.enter)="add()"
+                      placeholder="Ingresa tu tarea" class="texto"></ion-input>
+                  </ion-item>
+                </ion-item>
+              </ion-card-header>
+            </ion-card>
+
+            <!-- <img src="assets/odak.png" class="imagen" /> -->
+          </ion-card-content>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- </ion-content> -->
+
+  <!---Hacer-->
+
+  <!-- <ion-content class="fondo"> -->
+  <ion-slides>
+    <ion-grid class="columnas" color="#CAD2C5">
+      <ion-row>
+        <ion-slide>
+          <ion-col col-3>
+            <div class="titulo">
+              <!-- Ejecucion tareas -->
+              <h2>Tareas</h2>
+              <div cdkDropList [cdkDropListData]="objetivos" class="example-list" id="listauno"
+                (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['listados']">
+                <div class="example-box" *ngFor="let item of objetivos; let i = index" cdkDrag>
+                  <div>
+                    <h3>
+                      {{item.titulo}}
+                    </h3>
+                    <!----botonborrAR-->
+                    <div>
+                      <ion-button fill="clear" (click)="borrar(item.id)">
+                        <ion-icon name="trash-outline" class="basurero"></ion-icon>
+                      </ion-button>
+                      <!-----botoneditar-->
+                      <ion-button fill="clear" (click)="detalle(item, item.id)">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                      </ion-button>
+
+                      <ion-button fill="clear" *ngIf="item.tareas?.length > 0" (click)="hideCard(item.id)">
+                        <ion-icon name="swap-vertical-outline"></ion-icon>
+                      </ion-button>
+
+                    </div>
+
+                  </div>
+                  <ng-container *ngIf="showData[item.id]">
+                    <div *ngFor="let tarea of item.tareas; let i = index" style="width: 100%">
+                      <!----------------------------ionCard------------------------------------------------->
+                      <ion-card class="cerrarCard">
+                        <ion-card-header>
+                          <ion-card-title>{{tarea.nombreTarea}}</ion-card-title>
+                        </ion-card-header>
+                        <ion-item>
+                          <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+                          <ion-label>Prioridad</ion-label>
+                          <!-- {{+tarea['fk_categoria'] - 1}} -->
+                          <ion-label *ngIf="prioridades && prioridades.length > 0">{{prioridades[+tarea['fk_categoria']
+                            - 1]}}</ion-label>
+                        </ion-item>
+                        <ion-item>
+                          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+                          <ion-label>Inicio</ion-label>
+                          <ion-label>{{tarea['inicio_tarea']}}</ion-label>
+                        </ion-item>
+                        <ion-item>
+                          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+                          <ion-label>Vence</ion-label>
+                          <ion-label>{{tarea['termino_tarea']}}</ion-label>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Categoria</ion-label>
+                          <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+                          <!-- {{+tarea['fk_prioridad']-1}} -->
+                          <ion-label *ngIf="categorias && categorias.length > 0">
+                            {{categorias[+tarea['fk_prioridad']-1]}}</ion-label>
+                        </ion-item>
+                      </ion-card>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-slide>
+        <!---En Progreso-->
+        <ion-slide>
+          <ion-col col-6>
+            <div class="titulo">
+              <h2>En Progreso</h2>
+              <div cdkDropList [cdkDropListData]="encurso" class="example-list" id="listados"
+                (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['listatres','listauno']">
+                <div class="example-box" *ngFor="let item of encurso; let i = index" cdkDrag>
+                  {{item.titulo}}
+                  <div class="box"></div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-slide>
+        <!---exo-->
+
+        <ion-slide>
+          <ion-col col-6>
+            <div class="titulo">
+              <h2>Finalizado</h2>
+              <div cdkDropList [cdkDropListData]="finalizado" class="example-list" id="listatres"
+                (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['listados']">
+                <div class="example-box" *ngFor="let item of finalizado; let i = index" cdkDrag>
+                  {{item.titulo}}
+
+                  <div class="box">
+                    <ion-button fill="clear" (click)="borrarfinal(i)">
+                      <ion-icon name="checkmark-circle-outline"></ion-icon>
+                    </ion-button>
+
+
+
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-slide>
+      </ion-row>
+    </ion-grid>
+  </ion-slides>
+</ion-content>
+
+
+
+<app-footer></app-footer>

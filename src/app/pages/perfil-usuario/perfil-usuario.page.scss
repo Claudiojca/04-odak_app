@@ -1,6 +1,12 @@
 .btnmenu {
     color: #2f3e46;
 }
+ion-icon{
+    color: #2f3e46;
+}
+ion-item{
+    color: #2f3e46;
+}
 
 ion-toolbar {
     --background-color: #cad2c5;
@@ -16,16 +22,6 @@ ion-title {
     --color: #2f3e46;
 }
 
-ion-content {
-    .icard {
-        --color: #2f3e46;
-    }
-
-    .cardb {
-        color: #2f3e46;
-        fill: clear !important;
-    }
-}
 
 ion-footer{
     --color: #2f3e46;

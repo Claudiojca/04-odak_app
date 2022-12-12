@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { SwiperModule } from 'swiper/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SwiperModule } from 'swiper/angular';
             BrowserAnimationsModule,
             HttpClientModule,
             SwiperModule,
+            ReactiveFormsModule
             ],
   providers: [{ provide: RouteReuseStrategy,
                 useClass: IonicRouteStrategy },

@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { TareasPage } from "./tareas/tareas.page";
 
-import { TableroPage } from './tablero.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TableroPage
-  }
+    path: "",
+    component: TareasPage,
+  },
 ];
 
 @NgModule({

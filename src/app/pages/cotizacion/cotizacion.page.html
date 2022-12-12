@@ -18,11 +18,64 @@
 </ion-header>
 
 
-<ion-content class="ion-no-border">
+<ion-content class="ion-padding">
 
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+
+    <ion-card-header>
+      <ion-card-title align="center">Nueva Cotización</ion-card-title>
+    </ion-card-header>
+<form class="formcoti">
+  <ion-item>
+    <ion-label position="floating"><ion-icon name="business-outline"></ion-icon> Empresa:</ion-label>
+    <ion-input type="text" placeholder="Ingrese Empresa"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating"><ion-icon name="mail-outline"></ion-icon> Correo:</ion-label>
+    <ion-input type="email" placeholder="correo@odak.cl"></ion-input>
+ 
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating"><ion-icon name="call-outline"></ion-icon> Telefono:</ion-label>
+    <ion-input type="tel" placeholder="+56999178459"></ion-input>
+  </ion-item>
+  <ion-item>
+    <!-- <ion-datetime presentation="date-time" [preferWheel]="true"></ion-datetime> -->
+  </ion-item>
+
+<ion-button fill="clear" id="open-modal" (click)="Aproductos()"><ion-icon name="add-circle-outline"></ion-icon>Agregar Productos</ion-button>
+<ion-button fill="clear"><ion-icon name="print-outline"></ion-icon>Imprimir</ion-button>
+    <ion-list>
+      <ion-row>
+        <ion-col size="2">Codigo</ion-col>
+        <ion-col size="3">producto</ion-col>
+        <ion-col size="2">Marca</ion-col>
+        <ion-col size="2">Precio</ion-col>
+        <ion-col size="3">Cant</ion-col>
+      </ion-row>
+    </ion-list>
+    <ion-list>
+      <ion-row>
+        <ion-col size="2">
+          <ion-input type="text" placeholder="N°"></ion-input>
+        </ion-col>
+        <ion-col size="3">
+          <ion-input type="text" placeholder="Lapiz"></ion-input>
+        </ion-col>
+        <ion-col size="2">
+          <ion-input type="text" placeholder="Odis"></ion-input>
+        </ion-col>
+        <ion-col size="2">
+          <ion-input type="text" placeholder="$1.000"></ion-input>
+        </ion-col>
+        <ion-col size="3">
+          <ion-input type="number" placeholder="N°"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+    </form> 
 </ion-content>
 <app-footer></app-footer>

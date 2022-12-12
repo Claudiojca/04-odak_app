@@ -1,0 +1,202 @@
+.example-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+  font-size:20px;
+}
+
+.example-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: #52796f;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  --color: #2f3e46;
+
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: #2f3e46;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 20px;
+
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+ion-list {
+
+  min-height: 200px;
+}
+
+
+//COLORES DEL TABLERO////
+
+.ion-margin{
+
+--background: #CAD2C5 ;
+}
+
+
+// .body{
+
+
+//   --background: #CAD2C5;
+
+
+
+// }
+
+.titulo{
+
+color: #2f3e46;
+
+--background: #CAD2C5;
+
+}
+
+
+.input {
+
+  padding: 20px 10px;
+}
+
+
+.p{
+
+  right: -20px;
+}
+.fondo { --background: #CAD2C5;}
+
+
+///toolbar
+///
+ion-toolbar {
+  --background-color: #cad2c5;
+  --color: #2f3e46;
+}
+.fond {
+  --background: #cad2c5;
+  --color: #2f3e46;
+}
+.btnmenu {
+  color: #2f3e46;
+}
+///footer
+
+
+.footer {
+  --background: #52796f;}
+
+
+
+ //botondetalle
+.detalle{
+  --background: #52796f;
+
+}
+
+.imagen{
+
+  margin: 5em 5em 5em 0em;
+}
+
+/////botones///@at-root
+///
+///
+ion-button {
+  --background: #52796f;
+  --background-hover: #52796f;
+  --background-activated: #84A98C;
+  --background-focused: #84A98C;
+
+  --color: white;
+
+  --border-radius: 0;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 1px;
+
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+
+  --ripple-color: deeppink;
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+
+.box{
+
+  --background: #52796f;
+  --background-hover: #52796f;
+  --background-activated: #84A98C;
+  --background-focused: #84A98C;
+
+  --color: white;
+
+  --border-radius: 0;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 1px;
+
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+
+  --ripple-color: deeppink;
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
+
+
+}
+
+.texto{
+
+  font-weight: bold;
+  --color: #2f3e46;
+
+}
+
+
+
+
+
+
+
