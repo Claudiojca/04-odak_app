@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   urlbd: "http://localhost/ejercicio_php/"
-  
 };
 
 /*
