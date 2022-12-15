@@ -70,7 +70,7 @@ export class LoginPage implements OnInit {
         this.navCtrl.navigateRoot("/inicio");
         const alert = await this.alertCtrl.create({
           header: "¡Bienvenido a Odak!",
-          subHeader: respuesta[0].nombre +  respuesta[0].apellidos,
+          subHeader: respuesta[0].nombre +' '+  respuesta[0].apellidos,
           buttons: ["Aceptar"],
         });
         await alert.present();

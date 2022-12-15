@@ -5,6 +5,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+import { map } from "rxjs/operators";
 import { ModalController, NavController, PopoverController } from "@ionic/angular";
 import { ModalPage } from "../modal/modal.page";
 import { HttpClient } from "@angular/common/http";
@@ -13,7 +14,7 @@ import { PerfilInfoComponent } from "src/app/components/perfil-info/perfil-info.
 
 
 interface TareaInterface {
-  nombreTarea: string;
+  descripcion_tarea: string;
   prioridadTarea: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   inicio_tarea: Date;
@@ -25,6 +26,7 @@ interface ContenedorInterface {
   id?: number;
   titulo: string;
   tareas: TareaInterface[];
+
 }
 
 @Component({
@@ -41,7 +43,7 @@ export class TareasPage implements OnInit {
   prioridades = [];
   categorias = [];
   nombre: string = localStorage.getItem("nomb");
-  notific:any;
+  notific: any;
   ///Agrego la tarea/////
   objetivos: ContenedorInterface[] = [];
   ///en curso///
@@ -64,9 +66,9 @@ export class TareasPage implements OnInit {
     private serviciosDatosService: ServiciosDatosService,
     private navCtrl: NavController
   ) {
-}
+  }
 
-  async presentPopover (ev:any) {
+  async presentPopover(ev: any) {
 
     const popover = await this.popoverCtrl.create({
       component: PerfilInfoComponent,
@@ -74,7 +76,7 @@ export class TareasPage implements OnInit {
       translucent: false
     });
     return await popover.present();
-   }
+  }
   ngOnInit() {
     this.obtenerTodos();
     this.categorias = this.serviciosDatosService.categorias;
@@ -84,15 +86,28 @@ export class TareasPage implements OnInit {
   obtenerTodos() {
     return this.serviciosDatosService
       .getContenedor()
+      .pipe(map((respuesta: ContenedorInterface[]) => {
+        return [{
+          id: -1,
+          titulo: 'cotizaciones',
+          tareas: []
+        }, ...respuesta]
+      }))
       .subscribe((respuesta: ContenedorInterface[]) => {
+        
         this.objetivos = respuesta;
         respuesta.forEach((objetivo, i) => {
           this.showData[objetivo.id] = true;
+          if(objetivo.id!== -1){
           this.serviciosDatosService
             .getTareas(objetivo.id)
             .subscribe((tareas: any) => {
               this.objetivos[i] = { ...this.objetivos[i], tareas };
-            });
+            });}else{
+              this.serviciosDatosService.getTareasCotizacion().subscribe((tareas: any) => {
+                this.objetivos[i] = { ...this.objetivos[i], tareas };
+              });
+            }
         });
       });
   }
@@ -136,6 +151,7 @@ export class TareasPage implements OnInit {
     // this.objetivos.splice(i, 1);
     this.serviciosDatosService.borrar(i).subscribe((response) => {
       this.obtenerTodos();
+
     });
   }
 
@@ -159,7 +175,7 @@ export class TareasPage implements OnInit {
           () => {
             this.obtenerTodos();
           },
-          (error) => {}
+          (error) => { }
         );
       // if (!Array.isArray(item.tareas)) {
       //   item.tareas = [];

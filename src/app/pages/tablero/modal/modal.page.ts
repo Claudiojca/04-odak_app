@@ -45,6 +45,7 @@ export class ModalPage implements OnInit {
   async crearTarea() {
     if(this.nombreTarea && this.inicio_tarea && this.termino_tarea && this.prioridadTarea &&this.categoriaTareaId ){
     this.taskObject = {
+      usuario_id: localStorage.getItem("usuario_id"),
       nombreTarea: this.nombreTarea,
       inicio_tarea: this.inicio_tarea,
       termino_tarea: this.termino_tarea,

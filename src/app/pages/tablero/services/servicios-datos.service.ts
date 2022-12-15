@@ -1,16 +1,18 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: "root",
 })
 export class ServiciosDatosService {
-  url = "http://localhost/ejercicio_php/";
+  // url = "http://192.168.170.42/ejercicio_php/";
   categorias = ["metas", "equipo", "proveedores"];
   prioridad = ["Baja", "Media", "Alta"];
 
   headers: any;
+  private url: string = environment.urlbd
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
@@ -45,6 +47,11 @@ export class ServiciosDatosService {
   getTareas(contenendor) {
     return this.http.get(
       this.url + "obtenerTareas.php?contenedor=" + contenendor
+    );
+  }
+  getTareasCotizacion() {
+    return this.http.get(
+      this.url + "obtenerTareasCotizacion.php?usuario_id=" + localStorage.getItem("usuario_id")
     );
   }
 }

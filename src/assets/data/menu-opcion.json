@@ -14,11 +14,7 @@
     "name": "Empresas",
     "redirectTo": "/empresas"
 },
-  {
-      "icon": "document-text-outline",
-      "name": "Cotizacion",
-      "redirectTo": "/cotizacion"
-  },
+
   {
       "icon": "calculator-outline",
       "name": "Calculadora",
